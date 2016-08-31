@@ -19,13 +19,30 @@
 </div>
 <br><br>
 <table>
-  <% @images.each_slice(4) do |images| %>
+  <% @images.each_slice(2) do |images| %>
     <tr>
-      <% images.each do |image| %>
-        <td class='btn btn-default'>
-          <%= image_tag image.photo.url(:medium) %><br>
-          <b>Description:</b> <%= image.description %><br>
-          <%= link_to 'Delete', image_path(image.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+      <% images.each do |pic| %>
+        <% @pic = pic %>
+        <td class="btn btn-default">
+          <div class="row">
+            <div class="col-md-8">
+              <%= image_tag pic.photo.url(:medium), width: 500, height: 500 %><br>
+              <b>Description:</b> <%= pic.description %><br>
+              <%= link_to 'Delete', image_path(pic.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+            </div>
+            <div class="col-md-4">
+              <section id="comment-section">
+                <ol id="comments<%= pic.id %>">
+                  <%= render pic.comments %>
+                </ol>
+
+                <h4>Add a comment:</h4>
+
+                <%= render 'comments/form' %>
+
+              </section>
+            </div>
+          </div>
         </td>
       <% end %>
     </tr>
