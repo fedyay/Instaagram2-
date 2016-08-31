@@ -1,7 +1,24 @@
 <br><br>
 <% @pics[0].each do |pic| %>
-  <div class="col-md-12 btn btn-default">
-    <%= image_tag pic.photo.url(:large) %><br>
-    <b>Description:</b> <%= pic.description %><br>
+  <% @pic = pic %>
+  <div class="row">
+    <div class="col-md-6 btn btn-default">
+      <%= image_tag pic.photo.url(:large) %><br>
+    </div>
+    <div class="col-md-6">
+    <br>
+      <h3><b>Description:</b> <%= pic.description %><br></h3>
+      <h3><b>Comments:</b><br></h3>
+      <section id="comment-section">
+        <ol id="comments">
+          <%= render pic.comments %>
+        </ol>
+
+        <h4>Add a comment:</h4>
+
+        <%= render 'comments/form' %>
+
+      </section>
+    </div>
   </div>
 <% end %> 

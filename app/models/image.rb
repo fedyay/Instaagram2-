@@ -1,5 +1,6 @@
 class Image < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   has_attached_file :photo,
                     styles: { large: '500x500', medium: '300x300', thumb: '100x100'},
