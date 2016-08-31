@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
     params.permit!
+    @image_id = params[:image_id]
     @image = Image.find(params[:image_id])
     @comment = @image.comments.create(params[:comment])
 

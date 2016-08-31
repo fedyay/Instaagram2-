@@ -10,7 +10,7 @@
       <h3><b>Description:</b> <%= pic.description %><br></h3>
       <h3><b>Comments:</b><br></h3>
       <section id="comment-section">
-        <ol id="comments">
+        <ol id="comments<%= pic.id %>">
           <%= render pic.comments %>
         </ol>
 
