@@ -1,0 +1,7 @@
+<br><br>
+<% @pics[0].each do |pic| %>
+  <div class="col-md-12 btn btn-default">
+    <%= image_tag pic.photo.url(:large) %><br>
+    <b>Description:</b> <%= pic.description %><br>
+  </div>
+<% end %> 

@@ -13,7 +13,9 @@
   <br>
   <br>
   <br>
-  <%= link_to "Add Image", new_image_path, class: "btn btn-success" %>
+  <div class="row">
+    <%= link_to "Add Image", new_image_path, class: "btn btn-success" %>
+  </div>
   <% flash.each do |type, message| %>
     <%= content_tag :div, message, class: "alert alert-#{type}" %>
   <% end %>

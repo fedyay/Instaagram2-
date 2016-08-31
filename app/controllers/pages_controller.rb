@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def root
-
+    @pics = []
+    current_user.friends.each do |f|
+      @pics << f.images.to_a 
+    end
+    @pics = @pics.to_a
   end
 
   def show
