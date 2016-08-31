@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#root'
+  get '/my_page' => 'pages#show', as: 'profile'
   devise_for :users
 
   resources :images

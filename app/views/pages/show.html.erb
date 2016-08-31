@@ -1,0 +1,16 @@
+<h1><%= current_user.name %></h1>
+<h6>Your id: <%= current_user.id %> (is used to add you to smbs friends list)</h6>
+
+<table>
+  <% @images.each_slice(4) do |images| %>
+    <tr>
+      <% images.each do |image| %>
+        <td class='btn btn-default'>
+          <%= image_tag image.photo.url(:medium) %><br>
+          <b>Description:</b> <%= image.description %><br>
+          <%= link_to 'Delete', image_path(image.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
