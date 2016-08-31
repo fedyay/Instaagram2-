@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831131759) do
+ActiveRecord::Schema.define(version: 20160831153243) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.string   "friendable_type"
+    t.integer  "friendable_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blocker_id"
+    t.integer  "status"
+  end
 
   create_table "images", force: :cascade do |t|
     t.text     "description"

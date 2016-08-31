@@ -3,8 +3,6 @@
     <h1>New Image</h1>
   </div>
 </div>
-<%= p current_user.id %>
-<%= @image.errors.each do |err| p err end %>
 <hr />
 
 <%= form_for @image, html: {class: 'form-horizontal'} do |f| %>

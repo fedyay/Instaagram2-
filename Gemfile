@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'has_friendship'
 gem "paperclip", "~> 5.0.0"
 gem 'twitter-bootstrap-rails'
 gem 'devise'

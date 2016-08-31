@@ -7,6 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :images
-  has_many :friends, :class_name => 'User'
-  belongs_to :user, optional: true
+  has_friendship
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#root'
   get '/my_page' => 'pages#show', as: 'profile'
+  get '/friendship' => 'pages#friendship'
   devise_for :users
 
   resources :images
