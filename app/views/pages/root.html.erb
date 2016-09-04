@@ -19,6 +19,13 @@
         <%= render 'comments/form' %>
 
       </section>
+      <% unless current_user.liked? @pic %>
+        <%= link_to "Like | #{@pic.get_likes.size}", like_path(@pic), class: 'btn btn-success', method: :put %>
+      <% else %>
+        <%= link_to "Liked | #{@pic.get_likes.size}", "#", class: 'btn btn-default' %>
+      <% end %>
     </div>
+    <br>
+    <br>
   </div>
 <% end %> 

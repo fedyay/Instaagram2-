@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   has_many :images
   has_friendship
+  acts_as_voter
 end

@@ -17,4 +17,10 @@ class PagesController < ApplicationController
 
   	redirect_to profile_path
   end
+
+  def like
+    @img = Image.find(params[:format])
+    @img.liked_by current_user
+    redirect_to root_path
+  end
 end

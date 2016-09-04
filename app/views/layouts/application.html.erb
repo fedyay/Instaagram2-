@@ -13,9 +13,11 @@
   <br>
   <br>
   <br>
-  <div class="row">
-    <%= link_to "Add Image", new_image_path, class: "btn btn-success" %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="row">
+      <%= link_to "Add Image", new_image_path, class: "btn btn-success" %>
+    </div>
+  <% end %>
   <% flash.each do |type, message| %>
     <%= content_tag :div, message, class: "alert alert-#{type}" %>
   <% end %>

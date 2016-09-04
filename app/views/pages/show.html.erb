@@ -41,6 +41,7 @@
                 <%= render 'comments/form' %>
 
               </section>
+              <%= link_to "Liked | #{@pic.get_likes.size}", "#", class: 'btn btn-default' %>
             </div>
           </div>
         </td>
