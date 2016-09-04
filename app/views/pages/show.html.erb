@@ -26,7 +26,7 @@
         <td class="btn btn-default">
           <div class="row">
             <div class="col-md-8">
-              <%= image_tag pic.photo.url(:medium), width: 500, height: 500 %><br>
+              <%= image_tag pic.photo.url(:large) %><br>
               <b>Description:</b> <%= pic.description %><br>
               <%= link_to 'Delete', image_path(pic.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
             </div>
