@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'faker'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'has_friendship'
 gem "paperclip", "~> 5.0.0"

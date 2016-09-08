@@ -1,31 +1,35 @@
 <br><br>
-<% @pics[0].each do |pic| %>
-  <% @pic = pic %>
-  <div class="row">
-    <div class="col-md-6 btn btn-default">
-      <%= image_tag pic.photo.url(:large) %><br>
+<% unless @pics == nil %>
+  <% @pics.each do |pic| %>
+    <% @pic = pic %>
+    <div class="row">
+      <div class="col-md-6 btn btn-default">
+        <%= image_tag pic.photo.url(:large) %><br>
+      </div>
+      <div class="col-md-6">
+      <br>
+        <h3><b>By:</b> <%= pic.user.name %><br></h3>
+        <h3><b>By:</b> <%= pic.id %><br></h3>
+        <h3><b>Description:</b> <%= pic.description %><br></h3>
+        <h3><b>Comments:</b><br></h3>
+        <section id="comment-section">
+          <ol id="comments<%= pic.id %>">
+            <%= render pic.comments %>
+          </ol>
+
+          <h4>Add a comment:</h4>
+
+          <%= render 'comments/form' %>
+
+        </section>
+        <% unless current_user.liked? @pic %>
+          <%= link_to "Like | #{@pic.get_likes.size}", like_path(@pic), class: 'btn btn-success', method: :put %>
+        <% else %>
+          <%= link_to "Liked | #{@pic.get_likes.size}", "#", class: 'btn btn-default' %>
+        <% end %>
+      </div>
+      <br>
+      <br>
     </div>
-    <div class="col-md-6">
-    <br>
-      <h3><b>Description:</b> <%= pic.description %><br></h3>
-      <h3><b>Comments:</b><br></h3>
-      <section id="comment-section">
-        <ol id="comments<%= pic.id %>">
-          <%= render pic.comments %>
-        </ol>
-
-        <h4>Add a comment:</h4>
-
-        <%= render 'comments/form' %>
-
-      </section>
-      <% unless current_user.liked? @pic %>
-        <%= link_to "Like | #{@pic.get_likes.size}", like_path(@pic), class: 'btn btn-success', method: :put %>
-      <% else %>
-        <%= link_to "Liked | #{@pic.get_likes.size}", "#", class: 'btn btn-default' %>
-      <% end %>
-    </div>
-    <br>
-    <br>
-  </div>
-<% end %> 
+  <% end %>
+<% end %>

@@ -3,9 +3,13 @@ class PagesController < ApplicationController
   def root
     @pics = []
     current_user.friends.each do |f|
-      @pics << f.images
+      f.images.each do |img|
+        @pics.push(img)
+      end
     end
-    @pics[0] = @pics[0].order(id: :desc)
+    unless @pics == nil
+      @pics = @pics.sort! { |a,b| b.id <=> a.id }
+    end
   end
 
   def show
@@ -17,6 +21,20 @@ class PagesController < ApplicationController
   	current_user.friend_request(@frnd)
 
   	redirect_to profile_path
+  end
+
+  def accept
+    @frnd = User.find(params[:format])
+    current_user.accept_request(@frnd)
+
+    redirect_to profile_path
+  end
+
+  def decline
+    @frnd = User.find(params[:format])
+    current_user.decline_request(@frnd)
+
+    redirect_to profile_path
   end
 
   def like

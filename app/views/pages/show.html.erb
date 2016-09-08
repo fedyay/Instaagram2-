@@ -12,11 +12,38 @@
     <br>
     <h3>Your friends:</h3>
     <% current_user.friends.each do |frnd| %>
-      <h4><%= frnd.name %></h4> <br>
+      <h4><%= frnd.name %></h4>
+      <br>
     <% end %>
     <br>
   </div>
 </div>
+<% if current_user.pending_friends.any? %>
+  <div class="row">
+    <h3>Guys you have sent friend requests to:</h3>
+    <div class="col-sm-5">
+      <% current_user.pending_friends.each do |frnd| %>
+        <%= frnd.name %>
+        <br>
+      <% end %>
+      <br>
+    </div>
+  </div>
+<% end %>
+<% if current_user.requested_friends.any? %>
+  <div class="row">
+  <h3>Guys you have recieved friend requests from:</h3>
+    <div class="col-sm-5">
+      <% current_user.requested_friends.each do |frnd| %>
+        <%= frnd.name %>
+        <%= link_to 'Accept', accept_path(frnd), class: 'btn btn-success' %>
+        <%= link_to 'Decline', decline_path(frnd), class: 'btn btn-danger' %>
+        <br>
+      <% end %>
+      <br>
+    </div>
+  </div>
+<% end %>
 <br><br>
 <table>
   <% @images.each_slice(2) do |images| %>
