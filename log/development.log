@@ -20947,3 +20947,803 @@ Processing by PagesController#show as HTML
 Completed 200 OK in 234ms (Views: 196.1ms | ActiveRecord: 6.8ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:07 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 21ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:01:07 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (463.3ms)
+  Rendered layouts/application/_navbar.html.erb (3.4ms)
+Completed 200 OK in 931ms (Views: 912.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:01:15 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NcfxzXKLRMci0vpvn2TLra+Wkxzu3Db0Y957MQC5qAmQ/aVjNEK4o2UDNOTiwv8vpUFsZbILyff14+rzntIOow==", "user"=>{"email"=>"123123@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "123123@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2016-09-08 13:01:15 UTC], ["sign_in_count", 2], ["updated_at", 2016-09-08 13:01:15 UTC], ["id", 2]]
+  [1m[35m (152.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 378ms (ActiveRecord: 155.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:15 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  Rendered pages/root.html.erb within layouts/application (0.9ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 93ms (Views: 60.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:17 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  Rendered pages/root.html.erb within layouts/application (1.6ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 72ms (Views: 64.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:01:17 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 2]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 6]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (18.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.9ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (88.7ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 170ms (Views: 139.9ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/friendship?utf8=%E2%9C%93&q=3&commit=Add" for 127.0.0.1 at 2016-09-08 19:01:24 +0600
+Processing by PagesController#friendship as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"3", "commit"=>"Add"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["friend_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "friendships" ("friendable_type", "friendable_id", "friend_id", "created_at", "updated_at", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["friendable_type", "User"], ["friendable_id", 2], ["friend_id", 3], ["created_at", 2016-09-08 13:01:24 UTC], ["updated_at", 2016-09-08 13:01:24 UTC], ["status", 0]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "friendships" ("friendable_type", "friendable_id", "friend_id", "created_at", "updated_at", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["friendable_type", "User"], ["friendable_id", 3], ["friend_id", 2], ["created_at", 2016-09-08 13:01:24 UTC], ["updated_at", 2016-09-08 13:01:24 UTC], ["status", 1]]
+  [1m[35m (230.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/my_page
+Completed 302 Found in 256ms (ActiveRecord: 233.2ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:01:24 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 0]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 2]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 6]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.0ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (40.3ms)
+  Rendered layouts/application/_navbar.html.erb (1.3ms)
+Completed 200 OK in 106ms (Views: 98.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/friendship?utf8=%E2%9C%93&q=1&commit=Add" for 127.0.0.1 at 2016-09-08 19:01:27 +0600
+Processing by PagesController#friendship as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"1", "commit"=>"Add"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["friend_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "friendships" ("friendable_type", "friendable_id", "friend_id", "created_at", "updated_at", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["friendable_type", "User"], ["friendable_id", 2], ["friend_id", 1], ["created_at", 2016-09-08 13:01:27 UTC], ["updated_at", 2016-09-08 13:01:27 UTC], ["status", 0]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "friendships" ("friendable_type", "friendable_id", "friend_id", "created_at", "updated_at", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["friendable_type", "User"], ["friendable_id", 1], ["friend_id", 2], ["created_at", 2016-09-08 13:01:27 UTC], ["updated_at", 2016-09-08 13:01:27 UTC], ["status", 1]]
+  [1m[35m (196.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/my_page
+Completed 302 Found in 211ms (ActiveRecord: 198.4ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:01:28 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 0]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 2]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 6]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (38.6ms)
+  Rendered layouts/application/_navbar.html.erb (1.6ms)
+Completed 200 OK in 100ms (Views: 92.7ms | ActiveRecord: 3.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-08 19:01:32 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Xv3tix4qoJlXlMrLxOL7m3MKzQ2fH0Mccf53GA73U+6Db6Of63pCTK4IfWCiT+vIKdpKY/MfF8xsnMbB23szEA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:32 +0600
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:01:32 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.9ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 67ms (Views: 65.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:01:38 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPHSi6t1uX7MAD8x6LZApwlXxNp7LiD/dPkmCN4CP6YIETdwMtP/YSHzT0GLcVNMLUrOXMJLn9AwWeOprY2rcQ==", "user"=>{"email"=>"123456@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "123456@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2016-09-08 13:01:38 UTC], ["last_sign_in_at", 2016-09-08 13:01:38 UTC], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", 2016-09-08 13:01:38 UTC], ["id", 1]]
+  [1m[35m (203.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 392ms (ActiveRecord: 205.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:38 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  Rendered pages/root.html.erb within layouts/application (15.7ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 81ms (Views: 75.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:01:40 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 3]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 3], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 2]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 2], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 1]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 1], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (45.4ms)
+  Rendered layouts/application/_navbar.html.erb (1.3ms)
+Completed 200 OK in 110ms (Views: 101.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/accept.2" for 127.0.0.1 at 2016-09-08 19:01:42 +0600
+Processing by PagesController#accept as 
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHasFriendship::Friendship Load (0.4ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ? AND ("friendships"."status" != ?) ORDER BY "friendships"."id" ASC LIMIT ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["friend_id", 2], ["status", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "friendships" SET "status" = ?, "updated_at" = ? WHERE "friendships"."id" = ?[0m  [["status", 2], ["updated_at", 2016-09-08 13:01:42 UTC], ["id", 4]]
+  [1m[36mHasFriendship::Friendship Load (0.3ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ? AND ("friendships"."status" != ?) ORDER BY "friendships"."id" ASC LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["friend_id", 1], ["status", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "friendships" SET "status" = ?, "updated_at" = ? WHERE "friendships"."id" = ?[0m  [["status", 2], ["updated_at", 2016-09-08 13:01:42 UTC], ["id", 3]]
+  [1m[35m (156.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/my_page
+Completed 302 Found in 172ms (ActiveRecord: 159.0ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:01:42 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 3]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 3], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 2]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 2], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 1]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.4ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 1], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (41.6ms)
+  Rendered layouts/application/_navbar.html.erb (1.3ms)
+Completed 200 OK in 107ms (Views: 100.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:44 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 1], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 6]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (3.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/root.html.erb within layouts/application (34.2ms)
+  Rendered layouts/application/_navbar.html.erb (1.3ms)
+Completed 200 OK in 114ms (Views: 90.2ms | ActiveRecord: 3.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-08 19:01:46 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fmQ3tmpNXn/ls5RkmK3Wc/Gm9fcAafzuepN28bt2V4cJV+2z0mj+ivCSIcn+hVU//2f1w2XlyCClhyeRRLj7yA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:46 +0600
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:01:46 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.4ms)
+  Rendered layouts/application/_navbar.html.erb (1.6ms)
+Completed 200 OK in 70ms (Views: 68.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:01:58 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZZYsMfOVcjG4/wFlrwo1CKcYR31LDs8/IqsoGQLy3enUtyQPG91GihdZ78t/NYBAxcylKe5yB9oq6o7f7c5ANQ==", "user"=>{"email"=>"asdasd@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "asdasd@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2016-09-08 13:01:59 UTC], ["last_sign_in_at", 2016-09-08 13:01:59 UTC], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", 2016-09-08 13:01:59 UTC], ["id", 3]]
+  [1m[35m (138.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 330ms (ActiveRecord: 139.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:01:59 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  Rendered pages/root.html.erb within layouts/application (1.0ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 64ms (Views: 57.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:02:02 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 8]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (37.0ms)
+  Rendered layouts/application/_navbar.html.erb (1.3ms)
+Completed 200 OK in 97ms (Views: 89.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/accept.2" for 127.0.0.1 at 2016-09-08 19:02:03 +0600
+Processing by PagesController#accept as 
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHasFriendship::Friendship Load (0.3ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ? AND ("friendships"."status" != ?) ORDER BY "friendships"."id" ASC LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["friend_id", 2], ["status", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "friendships" SET "status" = ?, "updated_at" = ? WHERE "friendships"."id" = ?[0m  [["status", 2], ["updated_at", 2016-09-08 13:02:03 UTC], ["id", 2]]
+  [1m[36mHasFriendship::Friendship Load (0.2ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ? AND ("friendships"."status" != ?) ORDER BY "friendships"."id" ASC LIMIT ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["friend_id", 3], ["status", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "friendships" SET "status" = ?, "updated_at" = ? WHERE "friendships"."id" = ?[0m  [["status", 2], ["updated_at", 2016-09-08 13:02:03 UTC], ["id", 1]]
+  [1m[35m (184.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/my_page
+Completed 302 Found in 202ms (ActiveRecord: 187.2ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:02:03 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 8]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (31.0ms)
+  Rendered layouts/application/_navbar.html.erb (1.7ms)
+Completed 200 OK in 117ms (Views: 110.8ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-08 19:02:10 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kBascWfMp+XaOKZCAKnYXQfNbjKk4wOKeygEGj9zAEqgJwOrkY392AGsKr2EKmLR2hZOC/xtSH6sHHZ2ubKPMA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:02:10 +0600
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:02:10 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/application/_navbar.html.erb (1.6ms)
+Completed 200 OK in 78ms (Views: 76.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:02:13 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IayigiwU8zzawnW5ZnQoGiS+EJZFn0oFhpA5Aco974Fjkd5feEB6mfyrP7AidGsvFDkiCORtEN2kJnJky1MmJQ==", "user"=>{"email"=>"123123@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "123123@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2016-09-08 13:02:14 UTC], ["last_sign_in_at", 2016-09-08 13:01:15 UTC], ["sign_in_count", 3], ["updated_at", 2016-09-08 13:02:14 UTC], ["id", 2]]
+  [1m[35m (148.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 335ms (ActiveRecord: 149.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:02:14 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 2], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering pages/root.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 8]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 3]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 3], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 3], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 2]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.3ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 2], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 2], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 1]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (4.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 1], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 1], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/root.html.erb within layouts/application (55.1ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 135ms (Views: 119.3ms | ActiveRecord: 4.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-08 19:02:46 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zpIzMjkk64CwRucmUve8+Louu4P4fhgfYtOrf7JjD2IgL0+oYEeUb12JfkCQVoL1t5xW0YeHHlsnNJUD5Q9jyw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:02:46 +0600
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:02:46 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.0ms)
+  Rendered layouts/application/_navbar.html.erb (1.7ms)
+Completed 200 OK in 76ms (Views: 73.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-09-08 19:02:49 +0600
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered shared/_field_errors.html.erb (0.7ms)
+  Rendered shared/_field_errors.html.erb (0.0ms)
+  Rendered shared/_field_errors.html.erb (0.1ms)
+  Rendered shared/_field_errors.html.erb (0.1ms)
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.5ms)
+  Rendered layouts/application/_navbar.html.erb (1.6ms)
+Completed 200 OK in 92ms (Views: 89.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-09-08 19:03:04 +0600
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DcPumCIBW3jBrCXVNZY4tpplcAje4dqSwpjveaVuRVEY4UqPpKTXPE2ZyD84bIEJ5Fxt4TnyQcqPSa320bSHGw==", "user"=>{"name"=>"asd", "email"=>"asd@asd.asd", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "asd@asd.asd"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?)[0m  [["name", "asd"], ["created_at", 2016-09-08 13:03:04 UTC], ["updated_at", 2016-09-08 13:03:04 UTC], ["email", "asd@asd.asd"], ["encrypted_password", "$2a$11$bOveBrP56Y2WJbdXinfgJea234Jp3qmoRllvEaB7ESqZGQHRR8rDi"]]
+  [1m[35m (164.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ? WHERE "users"."id" = ?[0m  [["updated_at", 2016-09-08 13:03:04 UTC], ["sign_in_count", 1], ["current_sign_in_at", 2016-09-08 13:03:04 UTC], ["last_sign_in_at", 2016-09-08 13:03:04 UTC], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["id", 4]]
+  [1m[35m (160.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 534ms (ActiveRecord: 326.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:03:04 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  Rendered pages/root.html.erb within layouts/application (1.3ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 72ms (Views: 63.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/edit.4" for 127.0.0.1 at 2016-09-08 19:03:06 +0600
+Processing by Devise::RegistrationsController#edit as 
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered shared/_field_errors.html.erb (0.7ms)
+  Rendered shared/_field_errors.html.erb (0.1ms)
+  Rendered shared/_field_errors.html.erb (0.1ms)
+  Rendered shared/_field_errors.html.erb (0.0ms)
+  Rendered shared/_field_errors.html.erb (0.1ms)
+  Rendered devise/registrations/edit.html.erb within layouts/application (23.4ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 87ms (Views: 84.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:03:09 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 4]]
+  Rendered pages/show.html.erb within layouts/application (17.5ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 93ms (Views: 85.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:03:10 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  Rendered pages/root.html.erb within layouts/application (1.4ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 85ms (Views: 67.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:03:10 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 4]]
+  Rendered pages/show.html.erb within layouts/application (21.8ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 89ms (Views: 80.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/friendship?utf8=%E2%9C%93&q=3&commit=Add" for 127.0.0.1 at 2016-09-08 19:03:13 +0600
+Processing by PagesController#friendship as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"3", "commit"=>"Add"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["friend_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "friendships" ("friendable_type", "friendable_id", "friend_id", "created_at", "updated_at", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["friendable_type", "User"], ["friendable_id", 4], ["friend_id", 3], ["created_at", 2016-09-08 13:03:13 UTC], ["updated_at", 2016-09-08 13:03:13 UTC], ["status", 0]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "friendships" ("friendable_type", "friendable_id", "friend_id", "created_at", "updated_at", "status") VALUES (?, ?, ?, ?, ?, ?)[0m  [["friendable_type", "User"], ["friendable_id", 3], ["friend_id", 4], ["created_at", 2016-09-08 13:03:13 UTC], ["updated_at", 2016-09-08 13:03:13 UTC], ["status", 1]]
+  [1m[35m (206.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/my_page
+Completed 302 Found in 222ms (ActiveRecord: 208.4ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:03:13 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 0]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 4]]
+  Rendered pages/show.html.erb within layouts/application (14.6ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 80ms (Views: 73.6ms | ActiveRecord: 1.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-08 19:03:15 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"q7F/SIGelZR5MoZdnWX9GU7s7Q5OgB1bDhBw5hpp4Mu7wdpwBhtfCkBfyYz8IN21CTWurdiI0cQaX4MAQoXHvA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:03:15 +0600
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:03:15 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.6ms)
+  Rendered layouts/application/_navbar.html.erb (1.8ms)
+Completed 200 OK in 72ms (Views: 69.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:03:19 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8MJuNytemdpgeNH3VeL28fVp1uvFihVrv5xTTehUYCjlBq1WRUzifmD2OgCRqC3F9kXMZkACuYJFG8f2dVQGDg==", "user"=>{"email"=>"asdasd@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "asdasd@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2016-09-08 13:03:20 UTC], ["sign_in_count", 2], ["updated_at", 2016-09-08 13:03:20 UTC], ["id", 3]]
+  [1m[35m (136.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 331ms (ActiveRecord: 137.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:03:20 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 2]]
+  Rendering pages/root.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 6]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 3], ["voter_type", "User"], ["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 6], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 3], ["voter_type", "User"], ["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 5], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 3], ["voter_type", "User"], ["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 4], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/root.html.erb within layouts/application (32.2ms)
+  Rendered layouts/application/_navbar.html.erb (1.7ms)
+Completed 200 OK in 105ms (Views: 93.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:03:30 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (2.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 8]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (4.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (5.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (61.9ms)
+  Rendered layouts/application/_navbar.html.erb (2.0ms)
+Completed 200 OK in 146ms (Views: 134.2ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/accept.4" for 127.0.0.1 at 2016-09-08 19:03:31 +0600
+Processing by PagesController#accept as 
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mHasFriendship::Friendship Load (0.4ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ? AND ("friendships"."status" != ?) ORDER BY "friendships"."id" ASC LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["friend_id", 4], ["status", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "friendships" SET "status" = ?, "updated_at" = ? WHERE "friendships"."id" = ?[0m  [["status", 2], ["updated_at", 2016-09-08 13:03:31 UTC], ["id", 6]]
+  [1m[36mHasFriendship::Friendship Load (0.3ms)[0m  [1m[34mSELECT  "friendships".* FROM "friendships" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."friend_id" = ? AND ("friendships"."status" != ?) ORDER BY "friendships"."id" ASC LIMIT ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["friend_id", 3], ["status", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "friendships" SET "status" = ?, "updated_at" = ? WHERE "friendships"."id" = ?[0m  [["status", 2], ["updated_at", 2016-09-08 13:03:31 UTC], ["id", 5]]
+  [1m[35m (160.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/my_page
+Completed 302 Found in 176ms (ActiveRecord: 163.3ms)
+
+
+Started GET "/my_page" for 127.0.0.1 at 2016-09-08 19:03:31 +0600
+Processing by PagesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 0], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ? LIMIT ?[0m  [["friendable_id", 3], ["friendable_type", "User"], ["status", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ? ORDER BY "images"."id" DESC[0m  [["user_id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 8]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (2.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/show.html.erb within layouts/application (30.2ms)
+  Rendered layouts/application/_navbar.html.erb (1.3ms)
+Completed 200 OK in 90ms (Views: 83.5ms | ActiveRecord: 2.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-08 19:03:33 +0600
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1veVOxXPV6tIaivNZuXm/stAPiYAPHsUKLybre14XS7zeUnKcKFY3Uq31iik9fqhz83L/U2bT6RXKAh3gjA/mw=="}
+  [1m[36mUser Load (15.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms (ActiveRecord: 16.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:03:33 +0600
+Processing by PagesController#root as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :block rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:03:33 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+  Rendered layouts/application/_navbar.html.erb (1.5ms)
+Completed 200 OK in 74ms (Views: 71.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-08 19:03:36 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p0l6Dvx97bkK1BbJlicxs9ROCOcKtEoJ/w73JV9jv/fraoFVbgfyIxeFZLvIbGd4peVLuqXJCXpRFQ5JZzb4Zg==", "user"=>{"email"=>"asd@asd.asd", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "asd@asd.asd"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2016-09-08 13:03:36 UTC], ["sign_in_count", 2], ["updated_at", 2016-09-08 13:03:36 UTC], ["id", 4]]
+  [1m[35m (130.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 327ms (ActiveRecord: 132.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-08 19:03:37 +0600
+Processing by PagesController#root as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."friendable_id" = ? AND "friendships"."friendable_type" = ? AND "friendships"."status" = ?[0m  [["friendable_id", 4], ["friendable_type", "User"], ["status", 2]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."user_id" = ?[0m  [["user_id", 3]]
+  Rendering pages/root.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 8]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (3.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 4], ["voter_type", "User"], ["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 8], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."image_id" = ?[0m  [["image_id", 7]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered comments/_form.erb (1.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" IS NULL AND "votes"."vote_flag" = ?[0m  [["voter_id", 4], ["voter_type", "User"], ["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 7], ["votable_type", "Image"], ["vote_flag", true]]
+  Rendered pages/root.html.erb within layouts/application (22.7ms)
+  Rendered layouts/application/_navbar.html.erb (1.4ms)
+Completed 200 OK in 92ms (Views: 81.9ms | ActiveRecord: 2.0ms)
+
+
